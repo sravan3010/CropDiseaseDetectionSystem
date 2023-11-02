@@ -1,0 +1,41 @@
+.container
+{
+    font-size: 70px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 40px;
+}
+
+body
+{
+    background-image: url("/crop.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+}
+
+
+#share
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight:bold;
+    color: rgb(17, 17, 15);
+    margin-top: 10px;
+}
+
+#myFile
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    margin-left: 100px;
+}
+
+#Analyse
+{
+    height: 45px;
+    width: 120px;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    border: 2px solid green;
+    border-radius: 4px;
+}
