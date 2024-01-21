@@ -31,17 +31,6 @@ CLASS_NAMES=['Tomato___Bacterial_spot',
 def model_predict(img_path, model):
     print(img_path)
     result=None
-    # op_img=Image.open(img_path)
-    # img_resize=op_img.resize((256,256))
-    # img2arr = img_to_array(img_resize)/255.0
-    # img_reshape=img2arr.reshape(1,256,256,3)
-    # y_pred=model.predict(model,img_reshape)
-    # print(y_pred)
-    # result=CLASS_NAMES[np.argmax(y_pred[0],axis=-1)]
-    # confidence = round(100 * (np.max(y_pred[0])), 2)
-    # print(result,confidence,sep=' ')
-    # return result,confidence
-
     i=image.load_img(img_path,target_size=(256,256))
     i=image.img_to_array(i)
     i=i.reshape(1,256,256,3)
@@ -54,19 +43,6 @@ def model_predict(img_path, model):
     print(result,confidence,sep=' ')
     return result,confidence
 
-
-    # with open(img_path, "rb") as image: 
-    #     file = image.read() 
-    #     image = np.asarray(bytearray(file)) 
-    #     opencv_img=cv2.imdecode(image,1)
-    #     opencv_img=cv2.resize(opencv_img,(256,256))
-    #     opencv_img=opencv_img.reshape((1,256,256,3))
-    #     y_pred=model.predict(opencv_img)
-    #     print(y_pred)
-    #     result=CLASS_NAMES[np.argmax(y_pred[0])]
-    #     confidence = round(100 * (np.max(y_pred[0])), 2)
-    #     print(result,confidence,sep=' ')
-    # return result,confidence
 
 @app.route('/home', methods=['GET'])
 def home():
