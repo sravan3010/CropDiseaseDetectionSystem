@@ -1,13 +1,9 @@
 from flask import Flask, request, render_template
 from werkzeug.utils import secure_filename
-import tensorflow as tf
 from keras.models import load_model
 import numpy as np
 import cv2
 import os
-from keras.utils import img_to_array
-from PIL import Image
-from keras.preprocessing import image
 
 
 app=Flask(__name__)
