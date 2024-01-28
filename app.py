@@ -45,7 +45,7 @@ def model_predict(img_path, model):
     return num,result,confidence
     
         
-@app.route('/home', methods=['GET'])
+@app.route('/', methods=['GET'])
 def home():
     return render_template("index.html")
 
