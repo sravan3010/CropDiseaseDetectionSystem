@@ -30,23 +30,25 @@ CLASS_NAMES=['Tomato___Bacterial_spot',
 
 def model_predict(img_path, model):
     print(img_path)
-    result=None
-    i=image.load_img(img_path,target_size=(256,256))
-    i=image.img_to_array(i)
-    i=i.reshape(1,256,256,3)
-    predictions = model.predict(i)
-    print(predictions[0])
-    print(np.argmax(predictions))
-    print(CLASS_NAMES[np.argmax(predictions)])
-    result=CLASS_NAMES[np.argmax(predictions[0])]
-    confidence = round(100 * (np.max(predictions[0])), 2)
-    print(result,confidence,sep=' ')
-    return result,confidence
-
-
+    with open(img_path, "rb") as image: 
+        file = image.read() 
+        image = np.asarray(bytearray(file)) 
+        opencv_img=cv2.imdecode(image,1)
+        opencv_img=cv2.resize(opencv_img,(256,256))
+        opencv_img=opencv_img.reshape((1,256,256,3))
+        y_pred=model.predict(opencv_img)
+        print(y_pred)
+        num=str(np.argmax(y_pred[0]))
+        result=CLASS_NAMES[np.argmax(y_pred[0])]
+        confidence = round(100 * (np.max(y_pred[0])), 2)
+        print(num,result,confidence,sep=' ')
+    return num,result,confidence
+    
+        
 @app.route('/home', methods=['GET'])
 def home():
     return render_template("index.html")
+
 
 
 @app.route('/predict', methods=['GET', 'POST'])
@@ -57,8 +59,8 @@ def upload():
         file_path = os.path.join(basepath, 'uploads', secure_filename(f.filename))
         f.save(file_path)
         print(file_path)
-        preds,confidence = model_predict(file_path, model)
-        data=[preds,confidence]
+        idx,preds,confidence = model_predict(file_path, model)
+        data=[idx,preds,confidence]
         return data
     return None
 
