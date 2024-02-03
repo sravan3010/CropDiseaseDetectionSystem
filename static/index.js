@@ -41,7 +41,7 @@ $(document).ready(function () {
         // Show loading animation
         $('.loader').show();
         $('#analyze').show();
-        $('.box').show();
+        $('.box').hide();
 
         $.ajax({
             type: 'POST',
@@ -53,6 +53,7 @@ $(document).ready(function () {
             async: true,
             success: function (data) {
                 $('.loader').hide();
+                $('.box').show();
                 $('#result1').text(' Result:  ' + data[1]);
                 $('#result2').text('Confidence: '+data[2]);
                 if(data[0]==0)
