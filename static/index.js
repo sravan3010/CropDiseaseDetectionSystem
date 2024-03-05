@@ -54,9 +54,16 @@ $(document).ready(function () {
             success: function (data) {
                 $('.loader').hide();
                 $('.box').show();
+                $('#message').hide();
                 $('#result1').text(' Result:  ' + data[1]);
                 $('#result2').text('Confidence: '+data[2]);
-                if(data[0]==0)
+                if(data[0]==-1)
+                {
+                    $('#precaution').hide();
+                    $('#message').show();
+                    $('#output_page').html('<p>'+'Upload a VALID LEAF image!!!'+'</p>');
+                }  
+                else if(data[0]==0)
                     $('#output_page').html('<p>'+bacterial_spot_data+'</p>');
                 else if(data[0]==1)
                     $('#output_page').html('<p>'+early_blight_data+'</p>');
@@ -75,7 +82,11 @@ $(document).ready(function () {
                 else if(data[0]==8)
                     $('#output_page').html('<p>'+mosaic_virus_data+'</p>');
                 else if(data[0]==9)
+                {
+                    $('#precaution').hide();
+                    $('#message').show();
                     $('#output_page').html('<p>'+healthy_data+'</p>');
+                }
                 console.log('Success!');
             },
         });

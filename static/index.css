@@ -26,7 +26,7 @@ body
 #uploadFile
 {
     font-family: 'Times New Roman', Times, serif;
-    font-size: 15px;
+    font-size: 20px;
     margin-left: 100px;
 }
 
@@ -45,9 +45,10 @@ body
 {
     width: 650px;
     height: auto;
-    background-color:aquamarine;
+    background-color:wheat;
     border: black solid 3px;
     border-radius: 8px;
+    font-size: 18px;
 }
 
 .img-preview {
@@ -82,3 +83,8 @@ body
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+   
+
+#analyse:hover { 
+    transform: scale(1.1); /* increase scale on hover */   
+} 
