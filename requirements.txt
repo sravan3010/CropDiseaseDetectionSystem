@@ -4,7 +4,7 @@ Werkzeug==3.0.1
 Keras-Preprocessing==1.1.2
 matplotlib==3.4.0
 matplotlib-inline==0.1.2
-numpy==1.21.6
+numpy==1.21.1
 scikit-learn==1.0.2
-scipy==1.7.3
+scipy==1.6.1
 pandas==1.2.0
